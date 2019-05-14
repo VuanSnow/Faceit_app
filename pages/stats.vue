@@ -152,80 +152,7 @@
           </template>
         </v-tab-item>
         <v-tab-item key="matches">
-          <v-card
-            v-for="(match, i) in currentPlayer.matches"
-            :key="i"
-            class="mt-2 match-card"
-            :style="{marginBottom: '4px', borderRadius: '4px'}"
-            :color="match.win ? '#43A047' : '#C6443E'"
-          >
-            <v-card-title primary-title>
-              <v-flex xs3>
-                <p>{{ match.win ? 'Victory' : 'Defeat' }}</p>
-                <span>{{ matchDateDiff(match.finished_at) }}</span>
-                <p>{{ matchTotalTime(match.started_at, match.finished_at) }}</p>
-              </v-flex>
-              <v-flex xs3>
-                <h3>
-                  {{ match.win ? `${match.winner_team_score}/${match.loser_team_score}` :
-                  `${match.loser_team_score}/${match.winner_team_score}`}}
-                </h3>
-              </v-flex>
-              <v-flex xs3>
-                <h3>{{ match.kills }}/{{ match.assists }}/{{ match.deaths }}</h3>
-                <small>({{ match.kd_ratio }} kdr)</small>
-              </v-flex>
-              <v-flex xs3>
-                <h3>{{ match.map }}</h3>
-              </v-flex>
-            </v-card-title>
-            <v-divider/>
-            <v-card-actions>
-              <v-list-tile class="grow">
-                <v-layout align-center justify-center>
-                  <v-spacer/>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-img
-                        contain
-                        class="mr-2"
-                        max-height="60"
-                        max-width="60"
-                        src="https://www.freeiconspng.com/uploads/ak47-hud-csgo-png-icon-25.png"
-                        v-on="on"
-                      />
-                      <small v-on="on">{{ match.kills }}</small>
-                    </template>
-                    <span>SOMETHING</span>
-                  </v-tooltip>
-                  <v-spacer/>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-img
-                        contain
-                        class="mr-2"
-                        max-height="40"
-                        max-width="40"
-                        src="https://cdn2.iconfinder.com/data/icons/bullet-hits-on-different-parts-of-the-body/256/man-shot-bullet-009-512.png"
-                        v-on="on"
-                      />
-                      <small v-on="on">{{ match.headshots_percentage }}%</small>
-                    </template>
-                    <span>Headshot percentage</span>
-                  </v-tooltip>
-                  <v-spacer/>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-icon color="black" medium v-on="on">stars</v-icon>
-                      <small class="pl-2" v-on="on">{{ match.mvps }}</small>
-                    </template>
-                    <span>MVPs</span>
-                  </v-tooltip>
-                  <v-spacer/>
-                </v-layout>
-              </v-list-tile>
-            </v-card-actions>
-          </v-card>
+          <matches-app :currentPlayer="currentPlayer"/>
         </v-tab-item>
       </v-tabs>
       <v-fab-transition>
@@ -249,8 +176,12 @@
 <script>
 import { mapGetters } from 'vuex';
 import moment from 'moment';
+import matches from '@/components/matches';
 
 export default {
+  components: {
+    matchesApp: matches
+  },
   data: () => ({
     defaultAvatar:
       'https://www.cochinvoyage.com/wp-content/uploads/2016/05/default-blue-personnel.png',
@@ -258,6 +189,7 @@ export default {
     scrollPos: 0
   }),
   computed: {
+    ...mapGetters(['currentPlayer']),
     target: function() {
       return 0;
     },
@@ -268,7 +200,6 @@ export default {
         easing: 'easeInOutQuart'
       };
     },
-    ...mapGetters(['currentPlayer']),
     // GET TOTAL KILLS FROM ALL MATCHES
     totalKills: function() {
       let total = 0;

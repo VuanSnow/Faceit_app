@@ -1,23 +1,51 @@
 <template>
-  <v-layout pt-3>
-    <v-flex>
-      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3">
+  <v-layout row wrap pt-3 v-if="players.length > 1">
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
         <v-card-title class="justify-center">
-          <h1>Most Mvp</h1>
+          <h1>Most Mvps</h1>
         </v-card-title>
-        <h2>{{getMost('mvps').nickname}} - {{getMost('mvps').total}}</h2>
+        <h2>{{getMost('mvps') }}</h2>
       </v-card>
-      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 mt-2">
+    </v-flex>
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
         <v-card-title class="justify-center">
           <h1>Most Kills</h1>
         </v-card-title>
-        <h2>{{getMost('kills').nickname}} - {{getMost('kills').total}}</h2>
+        <h2>{{ getMost('kills') }}</h2>
       </v-card>
-      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 mt-2">
+    </v-flex>
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
         <v-card-title class="justify-center">
           <h1>Most Deaths</h1>
         </v-card-title>
-        <h2>{{getMost('deaths').nickname}} - {{getMost('deaths').total}}</h2>
+        <h2>{{ getMost('deaths') }}</h2>
+      </v-card>
+    </v-flex>
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
+        <v-card-title class="justify-center">
+          <h1>Most Assists</h1>
+        </v-card-title>
+        <h2>{{ getMost('assists') }}</h2>
+      </v-card>
+    </v-flex>
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
+        <v-card-title class="justify-center">
+          <h1>Most Aces</h1>
+        </v-card-title>
+        <h2>{{ getMost('penta_kills') }}</h2>
+      </v-card>
+    </v-flex>
+    <v-flex xs12 md6 lg4>
+      <v-card :style="{borderRadius: '4px'}" class="text-xs-center pb-3 ma-2">
+        <v-card-title class="justify-center">
+          <h1>Most Headshots</h1>
+        </v-card-title>
+        <h2>{{ getMost('headshots') }}</h2>
       </v-card>
     </v-flex>
   </v-layout>
@@ -41,12 +69,12 @@ export default {
       playersArr.sort((a, b) =>
         a.total < b.total ? 1 : b.total < a.total ? -1 : 0
       );
-      console.error('Title:', stat);
-      console.table(playersArr);
-      return playersArr[0];
+      return playersArr[0].nickname + ' - ' + playersArr[0].total;
     }
   },
-  mounted() {}
+  created() {
+    if (this.players.length < 1) this.$router.push('/');
+  }
 };
 </script>
 

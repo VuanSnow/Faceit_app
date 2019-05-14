@@ -14,7 +14,7 @@
             <v-card class="elevation-10">
               <v-img alt="No image!" max-height="200" :src="player.avatar || defaultAvatar"/>
               <v-card-actions class="justify-center">
-                <v-card-title @click="temp(player)">
+                <v-card-title @click="setPlayer(player)">
                   <nuxt-link to="/stats" class="player-name">{{player.nickname}}</nuxt-link>
                 </v-card-title>
               </v-card-actions>
@@ -39,20 +39,13 @@ export default {
   },
 
   methods: {
-    nameLog: function(name) {
-      console.log(name);
-    },
-    temp: function(player) {
-      // const data = { id, name };
-      this.setPlayer(player);
-    },
     ...mapActions({
       setPlayer: 'setCurrentPlayer'
     })
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .player-name {
   text-decoration: none;
   color: #ffffff;
