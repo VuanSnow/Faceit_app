@@ -4,7 +4,7 @@ require('dotenv').config();
 
 export default {
   mode: 'universal',
-  server: {
+  /* server: {
     host: '0.0.0.0'
   },
   /*

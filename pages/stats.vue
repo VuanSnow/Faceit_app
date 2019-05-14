@@ -155,7 +155,7 @@
           <v-card
             v-for="(match, i) in currentPlayer.matches"
             :key="i"
-            class="mt-2"
+            class="mt-2 match-card"
             :style="{marginBottom: '4px', borderRadius: '4px'}"
             :color="match.win ? '#43A047' : '#C6443E'"
           >
@@ -184,33 +184,43 @@
               <v-list-tile class="grow">
                 <v-layout align-center justify-center>
                   <v-spacer/>
-                  <v-img
-                    contain
-                    class="mr-2"
-                    max-height="60"
-                    max-width="60"
-                    src="https://www.freeiconspng.com/uploads/ak47-hud-csgo-png-icon-25.png"
-                  />
-
-                  <small>{{ match.kills }}</small>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-img
+                        contain
+                        class="mr-2"
+                        max-height="60"
+                        max-width="60"
+                        src="https://www.freeiconspng.com/uploads/ak47-hud-csgo-png-icon-25.png"
+                        v-on="on"
+                      />
+                      <small v-on="on">{{ match.kills }}</small>
+                    </template>
+                    <span>SOMETHING</span>
+                  </v-tooltip>
                   <v-spacer/>
-                  <v-img
-                    contain
-                    class="mr-2"
-                    max-height="40"
-                    max-width="40"
-                    src="https://cdn2.iconfinder.com/data/icons/bullet-hits-on-different-parts-of-the-body/256/man-shot-bullet-009-512.png"
-                  />
-                  <small>{{ match.headshots_percentage }}%</small>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-img
+                        contain
+                        class="mr-2"
+                        max-height="40"
+                        max-width="40"
+                        src="https://cdn2.iconfinder.com/data/icons/bullet-hits-on-different-parts-of-the-body/256/man-shot-bullet-009-512.png"
+                        v-on="on"
+                      />
+                      <small v-on="on">{{ match.headshots_percentage }}%</small>
+                    </template>
+                    <span>Headshot percentage</span>
+                  </v-tooltip>
                   <v-spacer/>
-                  <v-img
-                    contain
-                    class="mr-2"
-                    max-height="30"
-                    max-width="30"
-                    src="https://image.flaticon.com/icons/png/128/63/63928.png"
-                  />
-                  <small class="pl-2">{{ match.deaths }}</small>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-icon color="black" medium v-on="on">stars</v-icon>
+                      <small class="pl-2" v-on="on">{{ match.mvps }}</small>
+                    </template>
+                    <span>MVPs</span>
+                  </v-tooltip>
                   <v-spacer/>
                 </v-layout>
               </v-list-tile>
@@ -387,5 +397,11 @@ export default {
 .v-tabs__wrapper {
   box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2),
     0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12) !important;
+}
+.match-card {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 </style>
