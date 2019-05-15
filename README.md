@@ -1,8 +1,12 @@
-# faceit_app
+# FaceIT App
 
-> My epic Nuxt.js project
+**Live demo at: [http://faceit2.snowcoding.com/](http://faceit2.snowcoding.com/)**
 
-## Build Setup
+## Introduction
+
+Progressive Web Application for FACEIT Counter-Strike:Global Offensive statistics.
+
+## Build Setup / Getting started
 
 ``` bash
 # install dependencies
@@ -19,4 +23,31 @@ $ yarn start
 $ yarn run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## Features
+- Mobile friendly
+
+### View
+- players.
+- Player statistics.
+- players' matches.
+- Match statistics.
+
+## Currently missing features
+
+- [ ] Ultility damage statistic.
+- [ ] Multikill statistic.
+
+## Built With
+
+- [Vue.js](https://vuejs.org/) - The framework used
+- [Nuxt.js](https://nuxtjs.org/) - The framework used
+- [Express.js](https://expressjs.com/) - The framework used
+- [Vuetify](https://vuetifyjs.com/en/) - Component framework
+- [DigitalOcean](https://www.digitalocean.com/) - Deployment platform
+- [Vuex](https://vuex.vuejs.org/) - state management pattern + library
+- [Axios](https://axios.nuxtjs.org/) - HTTP request library
+- [moment.js](http://momentjs.com/) - Date library
+
+## Authors
+
+- ** Snow ** - _Initial work_ - [GitHub](https://github.com/VuanSnow)
