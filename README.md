@@ -1,4 +1,4 @@
-# FaceIT App
+# Faceit App
 
 **Live demo at: [http://faceit2.snowcoding.com/](http://faceit2.snowcoding.com/)**
 
