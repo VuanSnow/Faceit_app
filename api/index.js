@@ -43,7 +43,7 @@ app.get('/matches', (req, res) => {
     res.status(400).send('ID missing!');
   } else if (id) {
     axios
-      .get(`http://santamaa.com:3003/api/matches/?guid=${id}&limit=50`)
+      .get(`http://santamaa.com:3003/api/matches/?guid=${id}&limit=100`)
       .then(response => res.json(response.data))
       .catch(err => res.send({ error: err }));
   }
