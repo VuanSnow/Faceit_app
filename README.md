@@ -47,7 +47,7 @@ $ yarn run generate
 - [Vuex](https://vuex.vuejs.org/) - state management pattern + library
 - [Axios](https://axios.nuxtjs.org/) - HTTP request library
 - [moment.js](http://momentjs.com/) - Date library
-
+- [dotenv](https://www.npmjs.com/package/dotenv) - Zero-dependency module
 ## Authors
 
 - ** Snow ** - _Initial work_ - [GitHub](https://github.com/VuanSnow)
