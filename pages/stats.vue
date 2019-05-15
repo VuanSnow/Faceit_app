@@ -152,7 +152,7 @@
           </template>
         </v-tab-item>
         <v-tab-item key="matches">
-          <matches-app :currentPlayer="currentPlayer"/>
+          <matches-app :matches="currentPlayer.matches"/>
         </v-tab-item>
       </v-tabs>
       <v-fab-transition>

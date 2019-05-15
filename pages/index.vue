@@ -12,9 +12,16 @@
             :style="{marginBottom: '1em', borderRadius: '4px'}"
           >
             <v-card class="elevation-10">
-              <v-img alt="No image!" max-height="200" :src="player.avatar || defaultAvatar"/>
+              <nuxt-link to="/stats">
+                <v-img
+                  alt="No image!"
+                  max-height="200"
+                  :src="player.avatar || defaultAvatar"
+                  @click="setCurrentPlayer(player)"
+                />
+              </nuxt-link>
               <v-card-actions class="justify-center">
-                <v-card-title @click="setPlayer(player)">
+                <v-card-title @click="setCurrentPlayer(player)">
                   <nuxt-link to="/stats" class="player-name">{{player.nickname}}</nuxt-link>
                 </v-card-title>
               </v-card-actions>
@@ -41,7 +48,10 @@ export default {
   methods: {
     ...mapActions({
       setPlayer: 'setCurrentPlayer'
-    })
+    }),
+    setCurrentPlayer: function(player) {
+      this.setPlayer(player);
+    }
   }
 };
 </script>

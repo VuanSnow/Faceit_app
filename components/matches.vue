@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      v-for="(match, i) in currentPlayer.matches"
+      v-for="(match, i) in matches"
       :key="i"
       class="mt-2 match-card"
       :style="{marginBottom: '4px', borderRadius: '4px'}"
@@ -81,7 +81,7 @@
 import moment from 'moment';
 
 export default {
-  props: ['currentPlayer'],
+  props: ['matches'],
   computed: {
     // GET TOTAL KILLS FROM ALL MATCHES
     totalKills: function() {
