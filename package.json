@@ -19,7 +19,7 @@
     "@nuxtjs/pwa": "^2.6.0",
     "cross-env": "^5.2.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.4.0",
     "sass-loader": "^7.1.0",
     "vuetify": "^1.5.5",
